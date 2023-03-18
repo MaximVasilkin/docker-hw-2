@@ -8,11 +8,9 @@ WORKDIR /project
 
 COPY ./Django_project .
 
-RUN pip install -r requirements.txt
-
-RUN python3 manage.py makemigrations
-
-RUN python3 manage.py migrate
+RUN pip install -r requirements.txt && \
+    python3 manage.py makemigrations && \
+    python3 manage.py migrate --run-syncdb
 
 EXPOSE 8000
 
